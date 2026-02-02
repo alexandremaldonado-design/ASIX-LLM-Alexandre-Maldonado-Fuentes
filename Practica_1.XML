@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cataleg SYSTEM "cataleg.dtd">
+
+<cataleg>
+    <!-- Single -->
+    <single codi="S001">
+        <titol>Bohemian Rhapsody</titol>
+        <descripcio>Una de les cançons més emblemàtiques de Queen</descripcio>
+        <pais>Regne Unit</pais>
+        <idioma>Anglès</idioma>
+        <genere>Rock and Roll</genere>
+        <grup>Queen</grup>
+        <membres>
+            <membre sexe="home">
+                <nom>Freddie Mercury</nom>
+            </membre>
+            <membre sexe="home">
+                <nom>Brian May</nom>
+            </membre>
+            <membre sexe="home">
+                <nom>Roger Taylor</nom>
+            </membre>
+            <membre sexe="home">
+                <nom>John Deacon</nom>
+            </membre>
+        </membres>
+        <durada>5.55</durada>
+    </single>
+    
+    <!-- Àlbum -->
+    <album codi="A001">
+        <titol>Abbey Road</titol>
+        <descripcio>Onzè àlbum d'estudi dels Beatles</descripcio>
+        <pais>Regne Unit</pais>
+        <idioma>Anglès</idioma>
+        <genere>Pop</genere>
+        <genere>Rock and Roll</genere>
+        <grup>The Beatles</grup>
+        <membres>
+            <membre sexe="home">
+                <nom>John Lennon</nom>
+            </membre>
+            <membre sexe="home">
+                <nom>Paul McCartney</nom>
+            </membre>
+            <membre sexe="home">
+                <nom>George Harrison</nom>
+            </membre>
+            <membre sexe="home">
+                <nom>Ringo Starr</nom>
+            </membre>
+        </membres>
+        <numero_cancons>17</numero_cancons>
+        <cancons>
+            <canco numero="1">
+                <titol_canco>Come Together</titol_canco>
+                <durada_canco>4.20</durada_canco>
+            </canco>
+            <canco numero="2">
+                <titol_canco>Something</titol_canco>
+                <durada_canco>3.03</durada_canco>
+            </canco>
+            <canco numero="3">
+                <titol_canco>Maxwell's Silver Hammer</titol_canco>
+                <durada_canco>3.27</durada_canco>
+            </canco>
+            <!-- Altres cançons... -->
+        </cancons>
+    </album>
+    
+    <!-- Un altre single -->
+    <single codi="S002">
+        <titol>Hallelujah</titol>
+        <pais>Canadà</pais>
+        <idioma>Anglès</idioma>
+        <genere>Pop</genere>
+        <grup>Leonard Cohen</grup>
+        <membres>
+            <membre sexe="home">
+                <nom>Leonard Cohen</nom>
+            </membre>
+        </membres>
+        <durada>4.39</durada>
+    </single>
+</cataleg>

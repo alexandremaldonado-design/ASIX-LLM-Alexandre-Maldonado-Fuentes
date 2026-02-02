@@ -1,0 +1,27 @@
+<!ELEMENT cataleg (single|album)*>
+
+<!ELEMENT single (titol, descripcio?, pais, idioma, genere*, grup, membres, durada)>
+<!ATTLIST single codi CDATA #REQUIRED>
+
+<!ELEMENT album (titol, descripcio?, pais, idioma, genere*, grup, membres, numero_cancons, cancons)>
+<!ATTLIST album codi CDATA #REQUIRED>
+
+<!ELEMENT titol (#PCDATA)>
+<!ELEMENT descripcio (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!ELEMENT idioma (#PCDATA)>
+<!ELEMENT genere (#PCDATA)>
+<!ELEMENT grup (#PCDATA)>
+<!ELEMENT durada (#PCDATA)>
+<!ELEMENT numero_cancons (#PCDATA)>
+
+<!ELEMENT membres (membre+)>
+<!ELEMENT membre (nom)>
+<!ATTLIST membre sexe (home|dona) #REQUIRED>
+<!ELEMENT nom (#PCDATA)>
+
+<!ELEMENT cancons (canco+)>
+<!ELEMENT canco (titol_canco, durada_canco)>
+<!ATTLIST canco numero CDATA #REQUIRED>
+<!ELEMENT titol_canco (#PCDATA)>
+<!ELEMENT durada_canco (#PCDATA)>
