@@ -1,0 +1,36 @@
+﻿{
+  "Customers": [
+    {
+      "cust_id": "1",
+      "address": "Calbalgata 47",
+      "city": "inca",
+      "fed_id": "111-11-1111",
+      "postal_code": "07300",
+      "state": "MA",
+      "first_name_ind": "Alex",
+      "last_name_ind": "maldonado",
+      "birth_date": "2005-09-12"
+    },
+    {
+      "cust_id": "10",
+      "address": "Calbalgata 50",
+      "city": "inca",
+      "fed_id": "222-22-2222",
+      "postal_code": "07300",
+      "state": "MA",
+      "name": "Gerard",
+      "state_id": "12-345-678",
+      "incorp_date": "2006-01-19",
+      "officer": [
+        {
+          "officer_id": "001",
+          "end_date": "2024-12-12",
+          "first_name_off": "Gerard",
+          "last_name_off": "Pons",
+          "start_date": "2024-01-01",
+          "title": "President"
+        }
+      ]
+    }
+  ]
+}
