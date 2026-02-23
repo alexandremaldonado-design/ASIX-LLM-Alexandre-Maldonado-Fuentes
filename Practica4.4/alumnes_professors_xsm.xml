@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cifp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="cifp.xsd">
+    
+    <alumne id="1">
+        <nom>Joan</nom>
+        <llinatges>Garcia Perelló</llinatges>
+        <data_naixement>2005-03-15</data_naixement>
+        <correu>jgarcia@cifppau.cat</correu>
+        <telefon>971201234</telefon>
+        <adreça>Carrer de l'Escola, 1</adreça>
+        <data_matricula>2023-09-01</data_matricula>
+        <curs>DAM</curs>
+    </alumne>
+    
+    <alumne id="10">
+        <nom>Maria</nom>
+        <llinatges>Nicolau Rosselló</llinatges>
+        <data_naixement>2006-07-22</data_naixement>
+        <correu>mnicolau@cifppau.cat</correu>
+        <!-- telefon i adreça opcionals, no s'inclouen -->
+        <data_matricula>2024-09-01</data_matricula>
+        <curs>SMX</curs>
+    </alumne>
+    
+    <professor id="101">
+        <nom>Pere</nom>
+        <llinatges>Martínez Serra</llinatges>
+        <data_naixement>1980-11-02</data_naixement>
+        <correu>pmartinez@cifppau.cat</correu>
+        <telefon>971202345</telefon>
+        <!-- adreça opcional, no s'inclou -->
+        <data_incorporacio>2015-09-15</data_incorporacio>
+        <departament>Informàtica</departament>
+        <assignatura id_assignatura="101">
+            <nom_assignatura cicle="DAM" data_inici="2024-09-15" data_final="2025-06-20">Programació</nom_assignatura>
+        </assignatura>
+        <assignatura id_assignatura="102">
+            <nom_assignatura cicle="DAW">Entorns de desenvolupament</nom_assignatura>
+        </assignatura>
+    </professor>
+</cifp>

@@ -1,0 +1,52 @@
+﻿<{
+  "cifp": {
+    "alumne": [
+      {
+        "id": 1,
+        "nom": "Joan",
+        "llinatges": "Garcia Perelló",
+        "data_naixement": "2005-03-15",
+        "correu": "jgarcia@cifppau.cat",
+        "telefon": "971201234",
+        "adreça": "Carrer de l'Escola, 1",
+        "data_matricula": "2023-09-01",
+        "curs": "DAM"
+      },
+      {
+        "id": 10,
+        "nom": "Maria",
+        "llinatges": "Nicolau Rosselló",
+        "data_naixement": "2006-07-22",
+        "correu": "mnicolau@cifppau.cat",
+        "data_matricula": "2024-09-01",
+        "curs": "SMX"
+      }
+    ],
+    "professor": [
+      {
+        "id": 101,
+        "nom": "Pere",
+        "llinatges": "Martínez Serra",
+        "data_naixement": "1980-11-02",
+        "correu": "pmartinez@cifppau.cat",
+        "telefon": "971202345",
+        "data_incorporacio": "2015-09-15",
+        "departament": "Informàtica",
+        "assignatura": [
+          {
+            "id_assignatura": 101,
+            "nom_assignatura": "Programació",
+            "cicle": "DAM",
+            "data_inici": "2024-09-15",
+            "data_final": "2025-06-20"
+          },
+          {
+            "id_assignatura": 102,
+            "nom_assignatura": "Entorns de desenvolupament",
+            "cicle": "DAW"
+          }
+        ]
+      }
+    ]
+  }
+}

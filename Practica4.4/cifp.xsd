@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Elemento raíz -->
+    <xs:element name="cifp">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="alumne"/>
+                <xs:element ref="professor"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Elemento Alumne -->
+    <xs:element name="alumne">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nom"/>
+                <xs:element ref="llinatges"/>
+                <xs:element ref="data_naixement" minOccurs="0"/>
+                <xs:element ref="correu" minOccurs="0"/>
+                <xs:element ref="telefon" minOccurs="0"/>
+                <xs:element ref="adreça" minOccurs="0"/>
+                <xs:element ref="data_matricula"/>
+                <xs:element ref="curs"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Elemento Professor -->
+    <xs:element name="professor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nom"/>
+                <xs:element ref="llinatges"/>
+                <xs:element ref="data_naixement" minOccurs="0"/>
+                <xs:element ref="correu" minOccurs="0"/>
+                <xs:element ref="telefon" minOccurs="0"/>
+                <xs:element ref="adreça" minOccurs="0"/>
+                <xs:element ref="data_incorporacio"/>
+                <xs:element ref="departament"/>
+                <xs:element ref="assignatura" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Elementos comunes -->
+    <xs:element name="nom" type="xs:string"/>
+    <xs:element name="llinatges" type="xs:string"/>
+    <xs:element name="data_naixement" type="xs:string"/>
+    <xs:element name="correu" type="xs:string"/>
+    <xs:element name="telefon" type="xs:string"/>
+    <xs:element name="adreça" type="xs:string"/>
+
+    <!-- Elementos específicos alumno -->
+    <xs:element name="data_matricula" type="xs:string"/>
+    <xs:element name="curs">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="DAM"/>
+                <xs:enumeration value="DAW"/>
+                <xs:enumeration value="ASIX"/>
+                <xs:enumeration value="SMX"/>
+                <xs:enumeration value="SEIA"/>
+                <xs:enumeration value="ER"/>
+                <xs:enumeration value="AUT"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <!-- Elementos específicos profesor -->
+    <xs:element name="data_incorporacio" type="xs:string"/>
+    <xs:element name="departament">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Informàtica"/>
+                <xs:enumeration value="Electricitat"/>
+                <xs:enumeration value="Automoció"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <!-- Elemento Assignatura -->
+    <xs:element name="assignatura">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nom_assignatura"/>
+            </xs:sequence>
+            <xs:attribute name="id_assignatura" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Elemento nom_assignatura -->
+    <xs:element name="nom_assignatura">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="cicle" use="required">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="DAM"/>
+                                <xs:enumeration value="DAW"/>
+                                <xs:enumeration value="ASIX"/>
+                                <xs:enumeration value="SMX"/>
+                                <xs:enumeration value="SEIA"/>
+                                <xs:enumeration value="ER"/>
+                                <xs:enumeration value="AUT"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="data_inici" type="xs:string" use="optional"/>
+                    <xs:attribute name="data_final" type="xs:string" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
