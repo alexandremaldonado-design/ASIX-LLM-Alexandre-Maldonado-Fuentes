@@ -1,0 +1,1 @@
+SELECT * FROM classicmodels.payments join classicmodels.customers using (customerNumber);
