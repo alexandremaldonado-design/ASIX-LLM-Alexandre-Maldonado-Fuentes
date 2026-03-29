@@ -1,0 +1,45 @@
+﻿count(/DATA/ROW/amount)
+
+
+//check[customer/@customerNumber=”103”]/@number
+
+
+//check[amount < 1500 and customer/creditLimit > 1500]/customer/adress/city/text()
+
+
+
+//check[customer/adress/city='Nantes']/amount/text()
+
+
+
+//check[customer/adress/city[@country='Japan'] and customer/creditLimit > 1000]/date/text()
+
+
+
+max(//check[customer/salesRepEmployeeNumber='1370']/amount)
+
+
+
+
+//check[customer/salesRepEmployeeNumber='1370' and date < '2004-01-01']/amount/text()
+
+
+
+
+//check[amount = min(//check/amount)]/customer/customerName/text()
+
+
+
+
+
+//check[date='2004-10-19']/customer/customerName/text()
+
+
+
+
+concat(
+  'Client: ', (//check[customer/creditLimit > 1000]/customer/customerName)[1], 
+  ', Adreça: ', (//check[customer/creditLimit > 1000]/customer/adress/addressLine1)[1], 
+  ', ', (//check[customer/creditLimit > 1000]/customer/adress/city)[1], 
+  ', ', (//check[customer/creditLimit > 1000]/customer/adress/city/@country)[1]
+)
