@@ -1,22 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    DECLARACIÓ XML:
+    - version="1.0" -> Versió d'XML utilitzada (l'estàndard)
+    - encoding="utf-8" -> Codificació de caràcters que permet accents, ñ, etc.
+-->
+
 <feed xmlns="http://www.w3.org/2005/Atom">
+    <!--
+        feed: Element arrel del document Atom
+        xmlns: Declara l'espai de noms Atom (obligatori)
+    -->
+
+    <!-- id: Identificador únic i permanent del feed (normalment una URL) -->
     <id>https://www.motornews.com/</id>
+
+    <!-- title: Títol del canal de notícies -->
     <title>Notícies sobre cotxes</title>
+
+    <!-- subtitle: Descripció breu del contingut del feed -->
     <subtitle>Últimes notícies sobre el món del motor</subtitle>
+
+    <!-- link: Enllaç principal del feed (atribut href enlloc de contingut) -->
     <link href="https://www.motornews.com/" />
+
+    <!--
+        updated: Data i hora de l'última modificació del feed
+        Format ISO 8601: YYYY-MM-DDThh:mm:ss±hh:mm
+        - T: separador entre data i hora
+        - +01:00: fus horari (Espanya en horari d'hivern = UTC+1)
+    -->
     <updated>2024-11-15T12:00:00+01:00</updated>
+
+    <!--
+        author: Informació sobre l'autor del feed (obligatori a Atom)
+        Dins hi ha el nom (pot incloure email o uri opcionalment)
+    -->
     <author>
         <name>MotorNews</name>
     </author>
 
+    <!-- ========== PRIMERA ENTRY (NOTÍCIA) ========== -->
     <entry>
+        <!-- entry: Cada entrada individual del feed (equivalent a <item> a RSS) -->
+
+        <!-- id: Identificador únic d'aquesta notícia -->
         <id>https://www.motornews.com/ferrari-sf-2024-hibrid</id>
+
+        <!-- title: Títol de la notícia -->
         <title>Ferrari presenta el seu nou model híbrid, el SF-2024</title>
+
+        <!--
+            summary: Resum o descripció breu de la notícia
+            (a Atom també existeix <content> per al text complet)
+        -->
         <summary>Ferrari ha anunciat el llançament del seu nou model híbrid, el SF-2024, que combina rendiment i sostenibilitat. Amb un motor V8 de 800 CV i un sistema elèctric de suport, és el cotxe més avançat de la marca fins ara. La seva autonomia en mode elèctric arriba als 50 km.</summary>
+
+        <!-- link: Enllaç a la notícia completa al web original -->
         <link href="https://www.motornews.com/ferrari-sf-2024-hibrid" />
+
+        <!-- updated: Data de publicació o última modificació d'aquesta notícia -->
         <updated>2024-11-14T10:00:00+01:00</updated>
     </entry>
 
+    <!-- ========== SEGONA ENTRY (NOTÍCIA) ========== -->
     <entry>
         <id>https://www.motornews.com/volkswagen-investment-electric-cars</id>
         <title>Volkswagen anuncia una inversió de 10.000 milions en vehicles elèctrics</title>
@@ -24,4 +70,6 @@
         <link href="https://www.motornews.com/volkswagen-investment-electric-cars" />
         <updated>2024-11-12T15:30:00+01:00</updated>
     </entry>
+
 </feed>
+<!-- FI DEL DOCUMENT ATOM -->
