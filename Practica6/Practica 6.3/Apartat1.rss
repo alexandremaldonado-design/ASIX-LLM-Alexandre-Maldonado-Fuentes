@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Wiki</title>
+    <link>https://en.wikibooks.org/wiki/Main_Page</link>
+    <description>Diversos wiki</description>
+    <language>es-ES</language>
+    <image>
+      <url>https://en.wikibooks.org/logo.png</url>
+      <title>Wiki Logo</title>
+      <link>https://en.wikibooks.org/wiki/Main_Page</link>
+      <width>100</width>
+      <height>12</height>
+    </image>
+    <item>
+      <title>wiki1</title>
+      <link>https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro</link>
+      <description>Descripció</description>
+      <guid>https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro</guid>
+    </item>
+  </channel>
+</rss>
