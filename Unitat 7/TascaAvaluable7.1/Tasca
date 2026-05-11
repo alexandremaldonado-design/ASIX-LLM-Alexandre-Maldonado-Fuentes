@@ -1,1 +1,15 @@
 
+1.1
+//factura[total >= 500 and total <= 1000]/client/raosocial/nom/text()
+1.2
+count(//rebut[.//descripcio = "Porquet de xocolata negra"])
+1.3
+sum(//producte[descripcio = "Porquet de xocolata amb llet"]/(quantitat * preuunitari))
+1.4
+//rebut[.//quantitat = 2 or .//quantitat = 50]/@numero/string()
+1.5
+for $f in //factura
+let $nom := $f/client/raosocial/nom/string()
+let $total := $f/total/number()
+order by $total descending
+return concat("Client ", $nom, ". Total factura: ", $total)
