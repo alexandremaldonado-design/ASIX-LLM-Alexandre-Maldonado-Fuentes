@@ -1,1 +1,38 @@
 
+2.1. Mostra quants empleats hi ha a tota l'empresa. El resultat de la consulta ha de ser aquest: 
+count(collection("BASE_XML")//empleat)
+
+2.2. Mostra l'edat de l'empleat més vell de l'empresa. El resultat de la consulta ha de ser aquest: 
+max(collection("BASE_XML")//edat/number())
+
+2.3. Mostra el nom de l'empleat més vell de l'empresa. El resultat de la consulta ha de ser aquest: 
+let $max := max(collection("BASE_XML")//edat/number())
+return 
+  concat(
+    (collection("BASE_XML")//empleat[edat = $max]/nom)[1], 
+    " ", 
+    (collection("BASE_XML")//empleat[edat = $max]/llinatges)[1]
+  )
+
+2.4. Mostra el salari mitjà de l'empresa, arrodonint fins al segon decimal. El resultat de la consulta ha de ser aquest: 
+let $salaris := collection("BASE_XML")//salari/number()
+let $mitjana := avg($salaris)
+return format-number($mitjana, "0.00")
+
+
+2.5. Mostra el nom, llinatges i salari de tots els empleats que tenguin un salari superior a la mitjana. El llistat s'ha d'ordenar de major a menor salari. El resultat de la consulta ha de ser aquest: 
+let $salaris := collection("BASE_XML")//salari/number()
+let $mitjana := avg($salaris)
+for $e in collection("BASE_XML")//empleat[number(salari) > $mitjana]
+let $salari_num := number($e/salari)
+order by $salari_num descending
+return concat($e/nom, " ", $e/llinatges, ", ", $salari_num)
+
+
+2.6. Mostra quants empleats hi ha a cada departament. El resultat de la consulta ha de ser aquest (on "el_teu_llinatge" és el nom de la teva base de dades): 
+for $doc in collection("BASE_XML")
+let $ruta := concat("/BASE_XML/", tokenize(document-uri($doc), "/")[last()])
+return concat($ruta, ": ", count($doc//empleat))
+
+
+
