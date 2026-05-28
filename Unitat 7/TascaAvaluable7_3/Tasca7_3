@@ -1,1 +1,56 @@
 
+1. Carrega la informació de l’arxiu Employees.xmlal mysql workbench. Explica tot el procés amb captures de pantalla i copia el codi. 
+CREATE DATABASE TascaAvaluable7_3;
+USE TascaAvaluable7_3;
+
+
+CREATE TABLE employees_xml (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    xml_data LONGTEXT NOT NULL,
+    description VARCHAR(100)
+);
+
+INSERT INTO employees_xml (xml_data, description)
+VALUES (LOAD_FILE('C:/MYSQL/LLM/Employees.xml'), 'Employees original');
+
+
+2. Troba la consulta SQL amb la funció ExtractValue  que retornaria la solució a les seguents preguntes. 
+Com podem obtenir el nom de tots els empleats que treballen a la sucursal "Headquarters"?
+SELECT 
+    ExtractValue(xml_data, 
+        '//employee[assigned_branch/assigned_branch_name="Headquarters"]/first_name'
+    ) AS nombres_Headquarters
+FROM employees_xml;
+
+
+
+Quants empleats hi ha a l'àrea d'Operacions ("Operations")
+SELECT 
+    ExtractValue(xml_data, 
+        'count(//employee[department/department_name="Operations"])'
+    ) AS total_empleados_Operations
+FROM employees_xml;
+
+ Quins són els noms dels empleats que tenen com a superior a l'empleat amb emp_id="4"?
+SELECT 
+    ExtractValue(xml_data, 
+        '//employee[superior_emp_id="4"]/first_name'
+    ) AS nombres
+FROM employees_xml;
+
+
+
+Quina és la data d'inici de l'empleat amb emp_id="7"?
+SELECT 
+    ExtractValue(xml_data, 
+        '//employee[@emp_id="7"]/start_date'
+    ) AS fecha_inicio_empleado_7
+FROM employees_xml;
+
+Obtenir les ciutats on es troben les sucursals a les quals estan assignats els empleats amb el títol de "Head Teller".
+SELECT 
+    ExtractValue(xml_data, 
+        '//employee[title="Head Teller"]/assigned_branch/assigned_branch_city'
+    ) AS ciudades_Head_Tellers
+FROM employees_xml;
+
