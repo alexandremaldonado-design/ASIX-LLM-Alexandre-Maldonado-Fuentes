@@ -1,139 +1,49 @@
--- Crear base de dades (opcional)
-CREATE DATABASE IF NOT EXISTS bank_db;
-USE bank_db;
+drop database if exists ex4t6;
 
--- Taula accounts
+create database IF NOT EXISTS ex4t6;
+use ex4t6;
 CREATE TABLE accounts (
-    account_id VARCHAR(10) PRIMARY KEY,
-    avail_balance DECIMAL(15,2),
-    close_date DATE NULL,
-    last_activity_date DATE,
-    open_date DATE,
-    pending_balance DECIMAL(15,2),
-    status VARCHAR(10),
-    cust_id INT,
-    open_emp_id INT,
-    open_branch_id VARCHAR(10),
-    open_branch_name VARCHAR(100),
-    open_branch_address VARCHAR(200),
-    open_branch_city VARCHAR(50),
-    open_branch_state VARCHAR(10),
-    open_branch_zip_code VARCHAR(10),
-    product_cd VARCHAR(10),
-    product_date_offered DATE,
-    product_date_retired DATE NULL,
-    product_name VARCHAR(100),
-    product_type_cd VARCHAR(20),
-    product_type_name VARCHAR(100)
+    account_id INT PRIMARY KEY,
+    account_data JSON
 );
-
--- Taula transactions
 CREATE TABLE transactions (
-    txn_id VARCHAR(10) PRIMARY KEY,
-    amount DECIMAL(15,2),
-    funds_avail_date DATETIME,
-    txn_date DATETIME,
-    txn_type_cd VARCHAR(10),
-    account_id VARCHAR(10),
-    teller_emp_id INT,
-    execution_branch_id VARCHAR(10) NULL,
-    execution_branch_name VARCHAR(100) NULL,
-    execution_branch_address VARCHAR(200) NULL,
-    execution_branch_city VARCHAR(50) NULL,
-    execution_branch_state VARCHAR(10) NULL,
-    execution_branch_zip_code VARCHAR(10) NULL
+    txn_id INT PRIMARY KEY,
+    txn_data JSON
 );
 
--- Insertar des del JSON
--- Llegir el fitxer i convertir de binary a utf8mb4
-SET @json_accounts = CONVERT(LOAD_FILE('C:/MYSQL/Accounts.json') USING utf8mb4);
+INSERT INTO accounts VALUES 
+(1,'{"avail_balance": 1057.75, "close_date": "NULL", "last_activity_date": "2005-01-04", "open_date": "2000-01-15", "pending_balance": 1057.75, "status": "ACTIVE", "cust_id": 1, "open_emp_id": 10, "open_branch_id": "2", "open_branch_name": "Woburn Branch", "open_branch_address": "422 Maple St.", "open_branch_city": "Woburn", "open_branch_state": "MA", "open_branch_zip_code": "01801", "product_cd": "CHK", "product_date_offered": "2000-01-01", "product_date_retired": "NULL", "product_name": "checking account", "product_type_cd": "ACCOUNT", "product_type_name": "Customer Accounts"}'),
+(2,'{"avail_balance": 500, "close_date": "NULL", "last_activity_date": "2004-12-19", "open_date": "2000-01-15", "pending_balance": 500, "status": "ACTIVE", "cust_id": 1, "open_emp_id": 10, "open_branch_id": "2", "open_branch_name": "Woburn Branch", "open_branch_address": "422 Maple St.", "open_branch_city": "Woburn", "open_branch_state": "MA", "open_branch_zip_code": "01801", "product_cd": "SAV", "product_date_offered": "2000-01-01", "product_date_retired": "NULL", "product_name": "savings account", "product_type_cd": "ACCOUNT", "product_type_name": "Customer Accounts"}'),
+(3,'{"avail_balance": 3000, "close_date": "NULL", "last_activity_date": "2004-06-30", "open_date": "2004-06-30", "pending_balance": 3000, "status": "ACTIVE", "cust_id": 1, "open_emp_id": 10, "open_branch_id": "2", "open_branch_name": "Woburn Branch", "open_branch_address": "422 Maple St.", "open_branch_city": "Woburn", "open_branch_state": "MA", "open_branch_zip_code": "01801", "product_cd": "CD", "product_date_offered": "2000-01-01", "product_date_retired": "NULL", "product_name": "certificate of deposit", "product_type_cd": "ACCOUNT", "product_type_name": "Customer Accounts"}'),
+(4,'{"avail_balance": 2258.02, "close_date": "NULL", "last_activity_date": "2004-12-27", "open_date": "2001-03-12", "pending_balance": 2258.02, "status": "ACTIVE", "cust_id": 2, "open_emp_id": 10, "open_branch_id": "2", "open_branch_name": "Woburn Branch", "open_branch_address": "422 Maple St.", "open_branch_city": "Woburn", "open_branch_state": "MA", "open_branch_zip_code": "01801", "product_cd": "CHK", "product_date_offered": "2000-01-01", "product_date_retired": "NULL", "product_name": "checking account", "product_type_cd": "ACCOUNT", "product_type_name": "Customer Accounts"}'),
+(5,'{"avail_balance": 200, "close_date": "NULL", "last_activity_date": "2004-12-11", "open_date": "2001-03-12", "pending_balance": 200, "status": "ACTIVE", "cust_id": 2, "open_emp_id": 10, "open_branch_id": "2", "open_branch_name": "Woburn Branch", "open_branch_address": "422 Maple St.", "open_branch_city": "Woburn", "open_branch_state": "MA", "open_branch_zip_code": "01801", "product_cd": "SAV", "product_date_offered": "2000-01-01", "product_date_retired": "NULL", "product_name": "savings account", "product_type_cd": "ACCOUNT", "product_type_name": "Customer Accounts"}'),
+(7,'{"avail_balance": 1057.75, "close_date": "NULL", "last_activity_date": "2004-11-30", "open_date": "2002-11-23", "pending_balance": 1057.75, "status": "ACTIVE", "cust_id": 3, "open_emp_id": 13, "open_branch_id": "3", "open_branch_name": "Quincy Branch", "open_branch_address": "125 Presidential Way", "open_branch_city": "Quincy", "open_branch_state": "MA", "open_branch_zip_code": "02169", "product_cd": "CHK", "product_date_offered": "2000-01-01", "product_date_retired": "NULL", "product_name": "checking account", "product_type_cd": "ACCOUNT", "product_type_name": "Customer Accounts"}');
+INSERT INTO transactions VALUES 
+(1,'{ "amount": 100, "funds_avail_date": "2000-01-15 00:00:00", "txn_date": "2000-01-15 00:00:00", "txn_type_cd": "CDT", "account_id": 1, "teller_emp_id": 1, "execution_branch_id": 1, "execution_branch_name": "Headquarters", "execution_branch_address": "3882 Main St.", "execution_branch_city": "Waltham", "execution_branch_state": "MA", "execution_branch_zip_code": "02451"}'),
+(2,'{ "amount": 500, "funds_avail_date": "2000-01-15 00:00:00", "txn_date": "2000-01-15 00:00:00", "txn_type_cd": "CDT", "account_id": 2, "teller_emp_id": 2, "execution_branch_id": 1, "execution_branch_name": "Headquarters", "execution_branch_address": "3882 Main St.", "execution_branch_city": "Waltham", "execution_branch_state": "MA", "execution_branch_zip_code": "02451"}'),
+(3,'{"amount": 75, "funds_avail_date": "2004-06-30 00:00:00", "txn_date": "2004-06-30 00:00:00", "txn_type_cd": "CDT", "account_id": 3, "teller_emp_id": 2, "execution_branch_id": 2, "execution_branch_name": "Woburn Branch", "execution_branch_address": "422 Maple St.", "execution_branch_city": "Woburn", "execution_branch_state": "MA", "execution_branch_zip_code": "01801"}'),
+(4,'{ "amount": 1125, "funds_avail_date": "2001-03-12 00:00:00", "txn_date": "2001-03-12 00:00:00", "txn_type_cd": "CDT", "account_id": 4, "teller_emp_id": 2, "execution_branch_id": 1, "execution_branch_name": "Headquarters", "execution_branch_address": "3882 Main St.", "execution_branch_city": "Waltham", "execution_branch_state": "MA", "execution_branch_zip_code": "02451"}'),
+(5,'{"amount": 250, "funds_avail_date": "2001-03-12 00:00:00", "txn_date": "2001-03-12 00:00:00", "txn_type_cd": "CDT", "account_id": 5, "teller_emp_id": 7, "execution_branch_id": null, "execution_branch_name": null, "execution_branch_address": null, "execution_branch_city": null, "execution_branch_state": null, "execution_branch_zip_code": null}'),
+(6,'{ "amount": 325, "funds_avail_date": "2002-11-23 00:00:00", "txn_date": "2002-11-23 00:00:00", "txn_type_cd": "CDT", "account_id": 7, "teller_emp_id": 9, "execution_branch_id": null, "execution_branch_name": null, "execution_branch_address": null, "execution_branch_city": null, "execution_branch_state": null, "execution_branch_zip_code": null}'),
+(7,'{ "amount": 350, "funds_avail_date": "2002-12-15 00:00:00", "txn_date": "2002-12-15 00:00:00", "txn_type_cd": "CDT", "account_id": 8, "teller_emp_id": 7, "execution_branch_id": 4, "execution_branch_name": "So. NH Branch", "execution_branch_address": "378 Maynard Ln.", "execution_branch_city": "Salem", "execution_branch_state": "NH", "execution_branch_zip_code": "03079"}'),
+(8,'{ "amount": 154, "funds_avail_date": "2003-09-12 00:00:00", "txn_date": "2003-09-12 00:00:00", "txn_type_cd": "CDT", "account_id": 10, "teller_emp_id": 12, "execution_branch_id": null, "execution_branch_name": null, "execution_branch_address": null, "execution_branch_city": null, "execution_branch_state": null, "execution_branch_zip_code": null}'),
+(9,'{ "amount": 55, "funds_avail_date": "2000-01-15 00:00:00", "txn_date": "2000-01-15 00:00:00", "txn_type_cd": "CDT", "account_id": 11, "teller_emp_id": 9, "execution_branch_id": 4, "execution_branch_name": "So. NH Branch", "execution_branch_address": "378 Maynard Ln.", "execution_branch_city": "Salem", "execution_branch_state": "NH", "execution_branch_zip_code": "03079"}'),
+(10,'{ "amount": 452, "funds_avail_date": "2004-09-30 00:00:00", "txn_date": "2004-09-30 00:00:00", "txn_type_cd": "CDT", "account_id": 12, "teller_emp_id": 13, "execution_branch_id": 2, "execution_branch_name": "Woburn Branch", "execution_branch_address": "422 Maple St.", "execution_branch_city": "Woburn", "execution_branch_state": "MA", "execution_branch_zip_code": "01801"}');
 
--- INSERT amb el JSON convertit
-INSERT INTO accounts 
-SELECT * FROM JSON_TABLE(@json_accounts, '$.accounts[*]' COLUMNS(
-    account_id VARCHAR(10) PATH '$.account_id',
-    avail_balance DECIMAL(15,2) PATH '$.avail_balance',
-    close_date DATE PATH '$.close_date',
-    last_activity_date DATE PATH '$.last_activity_date',
-    open_date DATE PATH '$.open_date',
-    pending_balance DECIMAL(15,2) PATH '$.pending_balance',
-    status VARCHAR(10) PATH '$.status',
-    cust_id INT PATH '$.cust_id',
-    open_emp_id INT PATH '$.open_emp_id',
-    open_branch_id VARCHAR(10) PATH '$.open_branch_id',
-    open_branch_name VARCHAR(100) PATH '$.open_branch_name',
-    open_branch_address VARCHAR(200) PATH '$.open_branch_address',
-    open_branch_city VARCHAR(50) PATH '$.open_branch_city',
-    open_branch_state VARCHAR(10) PATH '$.open_branch_state',
-    open_branch_zip_code VARCHAR(10) PATH '$.open_branch_zip_code',
-    product_cd VARCHAR(10) PATH '$.product_cd',
-    product_date_offered DATE PATH '$.product_date_offered',
-    product_date_retired DATE PATH '$.product_date_retired',
-    product_name VARCHAR(100) PATH '$.product_name',
-    product_type_cd VARCHAR(20) PATH '$.product_type_cd',
-    product_type_name VARCHAR(100) PATH '$.product_type_name'
-)) AS jt;
+SELECT JSON_UNQUOTE(txn_data->'$.amount') AS amount FROM transactions;
 
--- Llegir el fitxer transactions.json
-SET @json_transactions = CONVERT(LOAD_FILE('C:/MYSQL/Transactions.json') USING utf8mb4);
-
--- Insertar les dades a la taula transactions
-INSERT INTO transactions 
-SELECT * FROM JSON_TABLE(@json_transactions, '$.transactions[*]' COLUMNS(
-    txn_id VARCHAR(10) PATH '$.txn_id',
-    amount DECIMAL(15,2) PATH '$.amount',
-    funds_avail_date DATETIME PATH '$.funds_avail_date',
-    txn_date DATETIME PATH '$.txn_date',
-    txn_type_cd VARCHAR(10) PATH '$.txn_type_cd',
-    account_id VARCHAR(10) PATH '$.account_id',
-    teller_emp_id INT PATH '$.teller_emp_id',
-    execution_branch_id VARCHAR(10) PATH '$.execution_branch_id',
-    execution_branch_name VARCHAR(100) PATH '$.execution_branch_name',
-    execution_branch_address VARCHAR(200) PATH '$.execution_branch_address',
-    execution_branch_city VARCHAR(50) PATH '$.execution_branch_city',
-    execution_branch_state VARCHAR(10) PATH '$.execution_branch_state',
-    execution_branch_zip_code VARCHAR(10) PATH '$.execution_branch_zip_code'
-)) AS jt;
-
-
-
-SET @json = CONVERT(LOAD_FILE('C:/MYSQL/Transactions.json') USING utf8mb4);
-
-SELECT JSON_UNQUOTE(JSON_EXTRACT(value, '$.amount')) AS amount
-FROM JSON_TABLE(@json, '$.transactions[*]' COLUMNS(value JSON PATH '$')) AS jt;
-
-
-
-SET @json = CONVERT(LOAD_FILE('C:/MYSQL/Transactions.json') USING utf8mb4);
-
-SELECT 
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.txn_id')) AS txn_id,
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.amount')) AS amount,
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.txn_date')) AS txn_date,
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.txn_type_cd')) AS txn_type_cd,
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.account_id')) AS account_id
-FROM JSON_TABLE(@json, '$.transactions[*]' COLUMNS(value JSON PATH '$')) AS jt
-WHERE JSON_EXTRACT(value, '$.amount') > 200;
-
-
-SET @json = CONVERT(LOAD_FILE('C:/MYSQL/Transactions.json') USING utf8mb4);
-
-SELECT 
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.txn_id')) AS txn_id,
-    JSON_UNQUOTE(JSON_EXTRACT(value, '$.txn_date')) AS txn_date
-FROM JSON_TABLE(@json, '$.transactions[*]' COLUMNS(value JSON PATH '$')) AS jt;
-
-
-SELECT 
-    t.account_id,
-    t.amount
-FROM transactions t
-JOIN accounts a ON t.account_id = a.account_id;
-
-
-SELECT 
-    account_id,
-    SUM(amount) AS total_amount
+SELECT *
 FROM transactions
-GROUP BY account_id
-ORDER BY account_id;
+WHERE JSON_EXTRACT(txn_data, '$.amount') > 200;
+ 
+SELECT txn_id, JSON_UNQUOTE(txn_data->'$.txn_date') AS txn_date FROM transactions;
+
+SELECT a.account_id, JSON_UNQUOTE(t.txn_data->'$.amount') AS amount FROM accounts a JOIN transactions t ON JSON_UNQUOTE(t.txn_data->'$.account_id') = a.account_id;
+ 
+SELECT 
+    JSON_UNQUOTE(txn_data->'$.account_id') AS account_id,
+    SUM(JSON_UNQUOTE(txn_data->'$.amount')) AS total_amount
+FROM 
+    transactions
+GROUP BY 
+    account_id;
